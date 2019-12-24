@@ -3,6 +3,7 @@
 
 #include "../factory.h"
 
+#include "d03.h"
 #include "d14.h"
 
 namespace tul{
@@ -12,6 +13,11 @@ namespace y2019{
 
 std::unique_ptr<Solver> load(int day){
 	switch (day){
+	case 3:
+		{
+		Factory<D03> f;
+		return f.construct();
+		}
 	case 14:
 		{
 		Factory<D14> f;
