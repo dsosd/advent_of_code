@@ -5,6 +5,7 @@
 
 #include "d03.h"
 #include "d14.h"
+#include "d22.h"
 
 namespace tul{
 namespace challenge{
@@ -21,6 +22,11 @@ std::unique_ptr<Solver> load(int day){
 	case 14:
 		{
 		Factory<D14> f;
+		return f.construct();
+		}
+	case 22:
+		{
+		Factory<D22> f;
 		return f.construct();
 		}
 	default:
