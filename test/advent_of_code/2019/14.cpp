@@ -79,6 +79,11 @@ TEST_CASE( "aoc/2019_14_1", "[aoc], [aoc/2019]" ){
 		std::ifstream in("test/advent_of_code/2019/14_hidden_8");
 		REQUIRE( answer(in) == "783895" );
 	}
+
+	SECTION( "hidden case IX" ){
+		std::ifstream in("test/advent_of_code/2019/14_hidden_9");
+		REQUIRE( answer(in) == "143173" );
+	}
 }
 
 TEST_CASE( "aoc/2019_14_2", "[aoc], [aoc/2019]" ){
@@ -150,6 +155,11 @@ TEST_CASE( "aoc/2019_14_2", "[aoc], [aoc/2019]" ){
 	SECTION( "hidden case VIII" ){
 		std::ifstream in("test/advent_of_code/2019/14_hidden_8");
 		REQUIRE( answer(in) == "1896688" );
+	}
+
+	SECTION( "hidden case IX" ){
+		std::ifstream in("test/advent_of_code/2019/14_hidden_9");
+		REQUIRE( answer(in) == "8845261" );
 	}
 }
 
