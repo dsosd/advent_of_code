@@ -1,10 +1,10 @@
 #include "d14.h"
 
-#include <util/string_parser.h>
-
 #include <cmath>
 #include <iostream>
 #include <list>
+
+#include <util/string_parser.h>
 
 namespace tul{
 namespace challenge{
