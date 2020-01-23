@@ -11,6 +11,8 @@ namespace aoc{
 
 class Solver{
 public:
+	virtual ~Solver() = default;
+
 	virtual Answer part_1(std::istream& in) = 0;
 	virtual Answer part_2(std::istream& in) = 0;
 };
