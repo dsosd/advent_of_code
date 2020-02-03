@@ -10,7 +10,7 @@ namespace test{
 namespace aoc{
 
 TEST_CASE( "aoc/2019_03_1", "[aoc], [aoc/2019]" ){
-	auto solver = challenge::aoc::load(2019, 03);
+	auto solver = challenge::aoc::load(2019, 3);
 	auto answer = [&solver](std::istream& in){
 		return solver->part_1(in).get_answer();
 	};
@@ -87,7 +87,7 @@ TEST_CASE( "aoc/2019_03_1", "[aoc], [aoc/2019]" ){
 }
 
 TEST_CASE( "aoc/2019_03_2", "[aoc], [aoc/2019]" ){
-	auto solver = challenge::aoc::load(2019, 03);
+	auto solver = challenge::aoc::load(2019, 3);
 	auto answer = [&solver](std::istream& in){
 		return solver->part_2(in).get_answer();
 	};
