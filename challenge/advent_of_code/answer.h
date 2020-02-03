@@ -11,6 +11,7 @@ class Answer{
 public:
 	Answer();
 	explicit Answer(long answer_);
+	explicit Answer(const std::string& str);
 
 	const std::string& get_answer() const;
 private:

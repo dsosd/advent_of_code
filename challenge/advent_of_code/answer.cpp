@@ -15,6 +15,10 @@ Answer::Answer(long answer_){
 	answer = ss.str();
 }
 
+Answer::Answer(const std::string& str){
+	answer = str;
+}
+
 const std::string& Answer::get_answer() const{
 	return answer;
 }
