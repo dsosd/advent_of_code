@@ -107,7 +107,8 @@ Answer D03::part_2(std::istream& in){
 		return std::abs(p1.x - p2.x) + std::abs(p1.y - p2.y);
 	};
 
-	int min_dist = min_dist_upper;
+	//hacky fix, min_dist upper bound doesn't work
+	int min_dist = std::numeric_limits<int>::max();
 	for (const auto& lines: potential_lines){
 		//sums distances on [0, line_num)
 		int dist = std::accumulate(lengths1.begin(), lengths1.begin() + lines.first, 0);
@@ -203,8 +204,9 @@ bool D03::get_close_intersect(const Line& l1, const Line& l2, Point& ret) const{
 
 	//1 stands for line 1 and 2 stands for line 2. a and b defines the interval
 	auto abs_closest = [&in_bounds](int a1, int b1, int a2, int b2){
-		int a = std::abs(a1) < std::abs(a2) ? a1 : a2;
-		int b = std::abs(b1) < std::abs(b2) ? b1 : b2;
+		//[a, b] is the overlap
+		int a = std::max(a1, a2);
+		int b = std::min(b1, b2);
 
 		if (in_bounds(0, a, b)){
 			return 0;

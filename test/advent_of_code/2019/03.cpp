@@ -109,7 +109,7 @@ TEST_CASE( "aoc/2019_03_2", "[aoc], [aoc/2019]" ){
 
 	SECTION( "hidden case I" ){
 		std::ifstream in("test/advent_of_code/2019/03_hidden_1");
-		REQUIRE( answer(in) == "15479" );
+		REQUIRE( answer(in) == "15612" );
 	}
 
 	SECTION( "hidden case II" ){
