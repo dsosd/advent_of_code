@@ -6,6 +6,8 @@
 
 #include <util/string_parser.h>
 
+#include "intcode_interpreter.h"
+
 namespace tul{
 namespace challenge{
 namespace aoc{
@@ -61,61 +63,6 @@ void D02::parse_input(std::istream& in){
 	for (std::size_t i = 0; i < parts.size(); ++i){
 		tape[i] = std::atoi(parts[i].c_str());
 	}
-}
-
-void Intcode_interpreter::load_tape(const std::vector<int>& tape_){
-	tape = tape_;
-}
-
-void Intcode_interpreter::set_tape(std::size_t pos, int val){
-	set(pos, val);
-}
-
-void Intcode_interpreter::set_i_ptr(std::size_t pos){
-	i_ptr = pos;
-}
-
-void Intcode_interpreter::exec_until_halt(){
-	bool halt = false;
-	int rax = 0;
-
-	while (!halt){
-		switch (get(i_ptr)){
-		case 1:
-			rax = get(get(i_ptr + 1)) + get(get(i_ptr + 2));
-			set(get(i_ptr + 3), rax);
-			i_ptr += 4;
-			break;
-		case 2:
-			rax = get(get(i_ptr + 1)) * get(get(i_ptr + 2));
-			set(get(i_ptr + 3), rax);
-			i_ptr += 4;
-			break;
-		case 99:
-			halt = true;
-			break;
-		default:
-			throw std::exception();
-		}
-	}
-}
-
-const std::vector<int>& Intcode_interpreter::get_tape() const{
-	return tape;
-}
-
-void Intcode_interpreter::set(std::size_t pos, int val){
-	if (pos >= tape.size()){
-		tape.resize(std::max(pos + 1, 2 * tape.size()));
-	}
-	tape[pos] = val;
-}
-
-int Intcode_interpreter::get(std::size_t pos){
-	if (pos >= tape.size()){
-		throw std::exception();
-	}
-	return tape[pos];
 }
 
 }
