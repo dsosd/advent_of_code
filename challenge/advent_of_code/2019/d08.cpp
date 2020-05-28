@@ -75,12 +75,12 @@ Answer D08::part_2(std::istream& in){
 		case 1024344606:
 			letter = 'E';
 			break;
-		/*case 1024344592:
+		case 1024344592:
 			letter = 'F';
 			break;
 		case 422074958:
 			letter = 'G';
-			break;*/
+			break;
 		case 623856210:
 			letter = 'H';
 			break;
