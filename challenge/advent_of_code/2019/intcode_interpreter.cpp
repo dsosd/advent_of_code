@@ -25,7 +25,16 @@ void Intcode_interpreter::set_io(std::shared_ptr<Intcode_io> input_, std::shared
 }
 
 void Intcode_interpreter::exec_until_halt(){
-	bool halt = false;
+	auto exit_code = exec_until_exit();
+
+	while (exit_code != Intcode_exit_t::halt){
+		exit_code = exec_until_exit();
+	}
+}
+
+Intcode_exit_t Intcode_interpreter::exec_until_exit(){
+	bool exit = false;
+	Intcode_exit_t exit_code;
 	int rax = 0, rbx, rcx;
 	rcx = rbx = rax;
 
@@ -37,7 +46,7 @@ void Intcode_interpreter::exec_until_halt(){
 		return modes % 10;
 	};
 
-	while (!halt){
+	while (!exit){
 		int modes = get(i_ptr) / 100;
 
 		switch (get(i_ptr) % 100){
@@ -56,7 +65,8 @@ void Intcode_interpreter::exec_until_halt(){
 				input->pop();
 			}
 			else{
-				throw std::exception();
+				exit_code = Intcode_exit_t::no_input;
+				exit = true;
 			}
 			set(get(i_ptr + 1), rax);
 			i_ptr += 2;
@@ -65,6 +75,8 @@ void Intcode_interpreter::exec_until_halt(){
 			rax = get(get(i_ptr + 1), get_mode(modes, 0));
 			output->push(rax);
 			i_ptr += 2;
+			exit_code = Intcode_exit_t::output;
+			exit = true;
 			break;
 		case 5:
 			rax = get(get(i_ptr + 1), get_mode(modes, 0));
@@ -97,12 +109,15 @@ void Intcode_interpreter::exec_until_halt(){
 			i_ptr += 4;
 			break;
 		case 99:
-			halt = true;
+			exit_code = Intcode_exit_t::halt;
+			exit = true;
 			break;
 		default:
 			throw std::exception();
 		}
 	}
+
+	return exit_code;
 }
 
 const std::vector<int>& Intcode_interpreter::get_tape() const{

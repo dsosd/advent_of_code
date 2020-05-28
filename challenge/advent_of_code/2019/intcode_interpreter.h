@@ -11,6 +11,12 @@ namespace challenge{
 namespace aoc{
 namespace y2019{
 
+enum class Intcode_exit_t{
+	halt,
+	no_input,
+	output
+};
+
 class Intcode_interpreter{
 public:
 	void load_tape(const std::vector<int>& tape_);
@@ -20,6 +26,7 @@ public:
 	void set_io(std::shared_ptr<Intcode_io> input_, std::shared_ptr<Intcode_io> output_);
 
 	void exec_until_halt();
+	Intcode_exit_t exec_until_exit();
 
 	const std::vector<int>& get_tape() const;
 private:

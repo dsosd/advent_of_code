@@ -11,6 +11,7 @@
 #include "d03.h"
 #include "d04.h"
 #include "d05.h"
+#include "d07.h"
 #include "d08.h"
 #include "d14.h"
 #include "d22.h"
@@ -54,6 +55,11 @@ std::unique_ptr<Solver> load(int day){
 	case 5:
 		{
 		Factory<D05> f;
+		return f.construct();
+		}
+	case 7:
+		{
+		Factory<D07> f;
 		return f.construct();
 		}
 	case 8:
