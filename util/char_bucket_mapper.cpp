@@ -1,3 +1,5 @@
+#include <master_h/all.h>
+
 #include "char_bucket_mapper.h"
 
 namespace tul{
@@ -7,8 +9,7 @@ bool C_bucket_mapper::insert_char(char val){
 	if (mapper.count(val)){
 		return false;
 	}
-	//the new element is created before .size() is called. the -1 counteracts that effect
-	mapper[val] = mapper.size() - 1;
+	mapper[val] = mapper.size();
 	return true;
 }
 

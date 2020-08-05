@@ -1,3 +1,5 @@
+#include <master_h/all.h>
+
 #ifndef uuid_guard_dd47e170_60949cb6_bf10998e_911fbeb6
 #define uuid_guard_dd47e170_60949cb6_bf10998e_911fbeb6
 
