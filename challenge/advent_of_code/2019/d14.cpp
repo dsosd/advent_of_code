@@ -1,3 +1,5 @@
+#include <master_h/all.h>
+
 #include "d14.h"
 
 #include <cmath>
@@ -61,8 +63,7 @@ void D14::parse_input(std::istream& in){
 
 int D14::get_chemical_id(const std::string& chemical){
 	if (!chemical_to_id.count(chemical)){
-		//We use a -1 because the map will make the element before the size call
-		chemical_to_id[chemical] = chemical_to_id.size() - 1;
+		chemical_to_id[chemical] = chemical_to_id.size();
 	}
 	return chemical_to_id[chemical];
 }
